@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserList from './components/UserList'
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import SignupForm from "./components/SignupForm";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <main className="flex-grow-1 p-3">
           <Routes>
             <Route path="/" element={<UserList />} />
+            <Route path="/signupform" element={<SignupForm />} />
           </Routes>
         </main>
 

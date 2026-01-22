@@ -4,6 +4,7 @@ import type { NavItem } from '../interfaces/nav';
 
 const navItems: NavItem[] = [
     { label: "UserList", path: "/" },
+    { label: "SignupForm", path: "/signupform" },
 ];
 
 export const Navbar: React.FC = () => {
