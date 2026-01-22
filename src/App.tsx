@@ -3,6 +3,7 @@ import UserList from './components/UserList'
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import SignupForm from "./components/SignupForm";
+import SignupList from "./components/SignupList";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<UserList />} />
             <Route path="/signupform" element={<SignupForm />} />
+            <Route path="/signuplist" element={<SignupList />} />
           </Routes>
         </main>
 

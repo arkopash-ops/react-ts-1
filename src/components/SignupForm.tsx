@@ -260,11 +260,11 @@ const SignupForm: React.FC = () => {
                                         value={formData.state}
                                         onChange={handleChange} >
                                         <option value={''}>--- Select ---</option>
-                                        <option value={'gujarat'}>Gujarat</option>
-                                        <option value={'maharashtra'}>Maharashtra</option>
-                                        <option value={'madhyaPradesh'}>Madhya Pradesh</option>
-                                        <option value={'rajasthan'}>Rajasthan</option>
-                                        <option value={'bihar'}>Bihar</option>
+                                        <option value={'Gujarat'}>Gujarat</option>
+                                        <option value={'Maharashtra'}>Maharashtra</option>
+                                        <option value={'Madhya Pradesh'}>Madhya Pradesh</option>
+                                        <option value={'Rajasthan'}>Rajasthan</option>
+                                        <option value={'Bihar'}>Bihar</option>
                                     </select>
                                     {errors.state && (
                                         <div className="invalid-feedback">{errors.state}</div>
