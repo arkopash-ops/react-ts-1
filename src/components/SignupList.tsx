@@ -12,11 +12,26 @@ const SignupList: React.FC = () => {
         return storedData ? JSON.parse(storedData) : [];
     });
 
+    const [search, setSearch] = useState("");
+    const [gender, setGender] = useState<"all" | "male" | "female">("all");
+
+    const filteredData = data.filter((user) => {
+        const searchMatch =
+            user.firstName.toLowerCase().includes(search.toLowerCase()) ||
+            user.lastName.toLowerCase().includes(search.toLowerCase()) ||
+            user.email.toLowerCase().includes(search.toLowerCase());
+
+        const genderMatch =
+            gender === "all" || user.gender === gender;
+
+        return searchMatch && genderMatch;
+    });
+
     const [currentPage, setCurrentPage] = useState<number>(1);
 
     const startIndex = (currentPage - 1) * USER_PER_PAGE;
     const endIndex = startIndex + USER_PER_PAGE;
-    const paginatedData = data.slice(startIndex, endIndex);
+    const paginatedData = filteredData.slice(startIndex, endIndex);
 
     return (
         <div className="container py-5">
@@ -31,10 +46,44 @@ const SignupList: React.FC = () => {
                         </div>
 
                         <div className="card-body px-4 pb-4">
-                            <div className="table-responsive">
+                            {/* Search Bar */}
+                            <div className="row mb-4 align-items-center">
+                                <div className="col-md-8 mb-2">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Search by name or email"
+                                        value={search}
+                                        onChange={(e) => {
+                                            setSearch(e.target.value);
+                                            setCurrentPage(1);
+                                        }}
+                                    />
+                                </div>
+
+                                {/* Button Group */}
+                                <div className="col-md-4 mb-2 d-flex gap-2 justify-content-md-end">
+                                    {(["all", "male", "female"] as const).map((g) => (
+                                        <button
+                                            key={g}
+                                            className={`btn ${gender === g ? "btn-primary" : "btn-outline-primary"}`}
+                                            onClick={() => {
+                                                setGender(g);
+                                                setCurrentPage(1);
+                                            }}
+                                        >
+                                            {g.toUpperCase()}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* table */}
+                            <div className="table-responsive mt-4">
                                 <SignupTable data={paginatedData} />
                             </div>
 
+                            {/* pahination */}
                             <div className="mt-4">
                                 <Pagination
                                     totalItems={data.length}
