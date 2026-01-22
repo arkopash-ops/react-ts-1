@@ -87,16 +87,21 @@ const SignupForm: React.FC = () => {
 
         if (!validateForm()) return;
 
-        const existingData: FormData[] = JSON.parse(localStorage.getItem("signupData") || "[]");
-        const updatedData = [...existingData, formData];
-        localStorage.setItem("signupData", JSON.stringify(updatedData));
+        try {
+            const existingData: FormData[] = JSON.parse(localStorage.getItem("signupData") || "[]");
+            const updatedData = [...existingData, formData];
+            localStorage.setItem("signupData", JSON.stringify(updatedData));
 
-        console.log("Saved to localStorage:", updatedData);
-        alert("Sign up successful!");
+            console.log("Saved to localStorage:", updatedData);
+            alert("Sign up successful!");
 
-        setFormData(initialFormData);
-        setErrors({});
-    }
+            setFormData(initialFormData);
+            setErrors({});
+        } catch (err) {
+            console.error("Failed to saave data: ", err);
+            alert("Somthing went wrong while saving your data. Please try again.");
+        }
+    };
 
     return (
         <div className="container py-5">
