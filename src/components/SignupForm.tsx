@@ -87,9 +87,12 @@ const SignupForm: React.FC = () => {
 
         if (!validateForm()) return;
 
-        const jsonData = JSON.stringify(formData, null, 2);
-        alert(jsonData);
-        console.log(jsonData);
+        const existingData: FormData[] = JSON.parse(localStorage.getItem("signupData") || "[]");
+        const updatedData = [...existingData, formData];
+        localStorage.setItem("signupData", JSON.stringify(updatedData));
+
+        console.log("Saved to localStorage:", updatedData);
+        alert("Sign up successful!");
 
         setFormData(initialFormData);
         setErrors({});
