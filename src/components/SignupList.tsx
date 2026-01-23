@@ -8,7 +8,6 @@ const USER_PER_PAGE = 3;
 const SignupList: React.FC = () => {
     const [data] = useState<FormData[]>(() => {
         const storedData = localStorage.getItem("signupData");
-        console.log(storedData);
         return storedData ? JSON.parse(storedData) : [];
     });
 

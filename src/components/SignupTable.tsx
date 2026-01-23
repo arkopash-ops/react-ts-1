@@ -13,6 +13,7 @@ export const SignupTable: React.FC<Props> = ({ data }) => {
                     <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>password</th>
                     <th>Phone</th>
                     <th>Gender</th>
                     <th>Address</th>
@@ -32,6 +33,7 @@ export const SignupTable: React.FC<Props> = ({ data }) => {
                             <td>{index + 1}</td>
                             <td>{user.firstName} {user.lastName}</td>
                             <td>{user.email}</td>
+                            <td>{user.password}</td>
                             <td>{user.phone}</td>
                             <td className='text-capitalize'>{user.gender}</td>
                             <td>{user.address}, {user.city}, {user.state}, India</td>

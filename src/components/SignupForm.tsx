@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import type { FormData } from '../interfaces/formData';
 
 const SignupForm: React.FC = () => {
@@ -314,6 +315,10 @@ const SignupForm: React.FC = () => {
                                         Sign Up
                                     </button>
                                 </div>
+
+                                <p className='text-center mb-4'>Already have an Account?
+                                    <Link to="/">Sign In</Link>
+                                </p>
 
                             </form>
 

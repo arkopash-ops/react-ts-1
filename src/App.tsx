@@ -4,6 +4,8 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import SignupForm from "./components/SignupForm";
 import SignupList from "./components/SignupList";
+import SigninForm from "./components/SigninForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
 
@@ -14,9 +16,21 @@ function App() {
 
         <main className="flex-grow-1 p-3">
           <Routes>
-            <Route path="/" element={<UserList />} />
+            <Route path="/" element={<SigninForm />} />
+            
             <Route path="/signupform" element={<SignupForm />} />
-            <Route path="/signuplist" element={<SignupList />} />
+
+            <Route path="/userlist" element={
+              <ProtectedRoute>
+                <UserList />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/signuplist" element={
+              <ProtectedRoute>
+                <SignupList />
+              </ProtectedRoute>
+            } />
           </Routes>
         </main>
 

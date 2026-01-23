@@ -11,3 +11,8 @@ export interface FormData {
     zip: string;
     agreed: boolean;
 };
+
+export interface StoredUser {
+    email: string;
+    password: string;
+};
