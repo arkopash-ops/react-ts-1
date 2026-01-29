@@ -6,6 +6,7 @@ import SignupForm from "./components/SignupForm";
 import SignupList from "./components/SignupList";
 import SigninForm from "./components/SigninForm";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MyHooks from "./Calling/MyHooks";
 
 function App() {
 
@@ -16,8 +17,9 @@ function App() {
 
         <main className="flex-grow-1 p-3">
           <Routes>
-            <Route path="/" element={<SigninForm />} />
-            
+            <Route path="/" element={<MyHooks />} />
+
+            <Route path="/signinform" element={<SigninForm />} />
             <Route path="/signupform" element={<SignupForm />} />
 
             <Route path="/userlist" element={

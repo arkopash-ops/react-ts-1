@@ -291,14 +291,14 @@ const SignupForm: React.FC = () => {
                                 {/* Checkbox */}
                                 <div className="col-12">
                                     <div className="form-check">
-                                        <input
-                                            type="checkbox"
-                                            name="agreed"
-                                            className={`form-check-input ${errors.agreed ? 'is-invalid' : ''}`}
-                                            checked={formData.agreed}
-                                            onChange={handleChange}
-                                        />
                                         <label htmlFor="agreed" className="form-check-label">
+                                            <input
+                                                type="checkbox"
+                                                name="agreed"
+                                                className={`form-check-input ${errors.agreed ? 'is-invalid' : ''}`}
+                                                checked={formData.agreed}
+                                                onChange={handleChange}
+                                            />
                                             I agree to the terms & conditions
                                         </label>
                                         {errors.agreed && (

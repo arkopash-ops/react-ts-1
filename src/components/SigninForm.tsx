@@ -5,6 +5,7 @@ import type { StoredUser } from '../interfaces/formData';
 const SigninForm: React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     type FormError = Partial<Record<"email" | "password", string>>;
     const [errors, setErrors] = useState<FormError>({});
@@ -38,7 +39,7 @@ const SigninForm: React.FC = () => {
             localStorage.getItem("signupData") || "[]"
         );
         console.log(users);
-        
+
 
         const matchedUser = users.find(
             (u) => u.email === email && u.password === password
@@ -51,7 +52,7 @@ const SigninForm: React.FC = () => {
         }
 
         localStorage.setItem("currentUser", JSON.stringify(matchedUser));
-        
+
         navigate("/signuplist")
     }
 
@@ -86,13 +87,27 @@ const SigninForm: React.FC = () => {
                                 {/* Password */}
                                 <div className="col-md-12">
                                     <label htmlFor="password" className="form-label">Password</label>
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                                        placeholder="********"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)} />
+                                    <div className="input-group input-group-lg">
+                                        <input
+                                            type={showPassword ? "text" : "password"}
+                                            name="password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            placeholder="********"
+                                            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                                        />
+
+                                        <button
+                                            type="button"
+                                            className="input-group-text"
+                                            onClick={() => setShowPassword((prev) => !prev)}
+                                        >
+                                            <i
+                                                className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"
+                                                    }`}
+                                            ></i>
+                                        </button>
+                                    </div>
                                     {errors.password && (
                                         <div className="invalid-feedback">{errors.password}</div>
                                     )}

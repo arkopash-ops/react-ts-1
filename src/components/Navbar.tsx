@@ -19,10 +19,11 @@ export const Navbar: React.FC = () => {
     }, []);
 
     const publicNavItems: NavItem[] = [
-        { label: "Sign In", path: "/" },
+        { label: "Custom Hook", path: "/" },
+        { label: "Sign In", path: "/signinform" },
         { label: "Sign Up", path: "/signupform" },
     ];
-    
+
     const privateNavItems: NavItem[] = [
         { label: "User Data", path: "/signuplist" },
         { label: "List", path: "/userlist" },
