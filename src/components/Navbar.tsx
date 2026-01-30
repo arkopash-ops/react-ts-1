@@ -20,6 +20,7 @@ export const Navbar: React.FC = () => {
 
     const publicNavItems: NavItem[] = [
         { label: "Custom Hook", path: "/" },
+        { label: "useMemo hook", path: "/useMemoHook" },
         { label: "Sign In", path: "/signinform" },
         { label: "Sign Up", path: "/signupform" },
     ];
